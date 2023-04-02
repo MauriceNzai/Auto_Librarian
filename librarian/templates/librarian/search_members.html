@@ -1,0 +1,67 @@
+{% extends "librarian/base.html" %}
+
+{% block content %}
+
+    <h3 class="font-weight-bold mt-4" style="font-family: monospace; font-size: 25px;">
+        Search Results:
+    </h3>
+
+    {% if members|length < 1 %}
+
+		<p>No Search Results</p>
+
+		Your search - <b>{{ query }}</b> - did not match any record.<br>
+
+		Suggestions:<br>
+		<ul>
+			<li>Search always by First name, Last Name, and id no</li>
+			<li>Try different keywords.</li>
+			<li>Try different first names and last names</li>
+			<li>Try different id no</li>
+		</ul>
+
+	{% else %}
+
+	<!--TABLE HEADER-->
+	<div class="card mt-4 bg-dark text-white list-view-header">
+		<div class="row">
+			<div class="col-md-4  text-center">
+				<h4 class="mt-2 ml-3">Name</h4>
+			</div>
+			<div class="col-md-2  text-center">
+				<h5 class="mt-2">Email</h5>
+			</div>
+			<div class="col-md-2  text-center">
+				<h5 class="mt-2">Contact No</h5>
+			</div>
+			<div class="col-md-2  text-center">
+				<h5 class="mt-2">Id No</h5>
+            </div>
+            <div class="col-md-2  text-center">
+				<h5 class="mt-2">Issue Book</h5>
+			</div>
+		</div>
+	</div>
+
+    <!--TABLE ROWS-->
+    {% for member in members %}
+    <div class="card mt-4 font-weight-bold text-white list-view">
+        <div class="row">
+            <div class="col-md-4 text-center mt-2">
+                <p><a class="text-decoration-none text-white mt-2" href="{% url 'member-detail' member.id %}">{{ member.first_name }} {{ member.last_name }}</a></p>
+            </div>
+            
+            <div class="col-md-2  text-center">
+                <p class="mt-2">{{ member.email }}</p>
+            </div>
+            <div class="col-md-2  text-center">
+                <p class="mt-2">{{ member.id_no }}</p>
+            </div>
+            <div class="col-md-2  text-center">
+                <a class="btn btn-secondary mt-2 mb-2" href="{% url 'issue-books' member.id %}">Issue</a>
+            </div>
+        </div>
+    </div>
+    {% endfor %}
+    {% endif %}
+{% endblock content %}
