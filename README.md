@@ -3,7 +3,7 @@
 <h4>Features</h4>
 <ul>
 <li>Simple and easy to use interface</li>
-<li>Add new books to Library/li>
+<li>Add new books to Library</li>
 <li>Edit books and deleting books from the library</li>
 <li>Adding new members</li>
 <li>Editing and deleting member information</li>
