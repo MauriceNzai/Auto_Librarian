@@ -25,4 +25,4 @@
 <h4>Book List Page</h4>
 <img src="">
 <h4>Member List Page</h4>
-<img src="/screenshots/dashboard1.png">
+<img src="/screenshots/Dashboard1.png">
