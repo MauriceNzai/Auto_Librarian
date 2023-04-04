@@ -15,9 +15,9 @@
 <h4>Login Page</h4>
 <img src="/screenshots/login.png">
 <h4>Add Member Page</h4>
-<img src="">
+<img src="/screenshots/Add_Member.png">
 <h4>Add Book Page</h4>
-<img src="">
+<img src="/screenshots/Add_Book_1.png">
 <h4>Issue Book Page</h4>
 <img src="">
 <h4>Return Book Page</h4>
@@ -25,4 +25,4 @@
 <h4>Book List Page</h4>
 <img src="">
 <h4>Member List Page</h4>
-<img src="">
+<img src="/screenshots/dashboard1.png">
