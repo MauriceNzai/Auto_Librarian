@@ -22,7 +22,7 @@
 <img src="">
 <h4>Return Book Page</h4>
 <img src="">
-<h4>Book List Page</h4>
+<h4>Members List Page</h4>
 <img src="">
-<h4>Member List Page</h4>
+<h4>Books List Page</h4>
 <img src="/screenshots/Dashboard1.png">
