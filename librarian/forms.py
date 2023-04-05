@@ -17,6 +17,7 @@ class IssueForm(forms.ModelForm):
         fields = [
                 'member_name',
                 'book'
+                'expected_return_date'
                 ]
 
 
