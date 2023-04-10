@@ -229,50 +229,49 @@ def calculate_penalty(issue):
 
 @login_required
 def returnBook(request, pk):
-    obj = get_object_or_404(Issue, id=pk)
-    print(obj)
+    if request.method == 'POST':
+        obj = get_object_or_404(Issue, id=pk)
 
-    fine = 0
-    d1 = date.today()
-    d2 = obj.expected_return_date
-    diff_date = d2.day - d1.day
-    print(diff_date)
-    if diff_date > 0:
-        fine = diff_date*50
+        fine = 0
+        d1 = date.today()
+        d2 = obj.expected_return_date
+        diff_date = d2.day - d1.day
+        if diff_date > 0:
+            fine = diff_date*50
 
-    book = Book.objects.get(book_title=obj.book)
-    print(book)
-    book.available_copies = book.available_copies + 1
-    book.save()
+        book = Book.objects.get(book_title=obj.book)
+        book.available_copies = book.available_copies + 1
+        book.save()
 
-    fname = obj.member_name.first_name
-    print(fname)
+        fname = obj.member_name.first_name
 
-    member = Member.objects.get(first_name=fname)
-    print(member)
-    member.no_of_issued_books = member.no_of_issued_books - 1
-    member.save()
+        member = Member.objects.get(first_name=fname)
+        member.no_of_issued_books = member.no_of_issued_books - 1
+        member.save()
 
-    initial_dict = {
-        'book' : obj.book,
-        'member_name': obj.member_name,
-        'actual_return_date': datetime.today,
-        'fine_amount': fine,
-    }
+        initial_dict = {
+            'book' : obj.book,
+            'member_name': obj.member_name,
+            'actual_return_date': datetime.today,
+            'fine_amount': fine,
+        }
 
-    form = ReturnBookForm(request.POST or None, initial=initial_dict)
+        form = ReturnBookForm(request.POST or None, initial=initial_dict)
 
-    if form.is_valid():
-        form.save()
-        messages.success(request, 'You have returned the book')
-        return redirect('book-list')
+        Issue.objects.get(id=obj.id).delete()
+        
+        if form.is_valid():
+            form.save()
+            messages.success(request, 'You have returned the book')
+            return redirect('returned-book')
 
-    Issue.objects.get(id=obj.id).delete()
+    else:
+        form = ReturnBookForm()
 
-    context = {
-        'form': form
-    }
-    return render(request, 'librarian/return_book_form.html', context)
+        context = {
+            'form': form
+        }
+        return render(request, 'librarian/return_book_form.html', context)
 
 @login_required
 def TransactionandReturnBook(request):

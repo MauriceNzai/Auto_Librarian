@@ -31,9 +31,6 @@
 <div class="card mt-4 font-weight-bold text-white"
     style="min-height: 50px; font-family: monospace; font-size: 15px; background-image: linear-gradient(#2193b0, #6dd5ed);">
     <div class="row">
-        <!--<div class="col-md-3 text-center mt-2">
-                <p><a class="text-decoration-none text-white mt-2" href="#">{{ issue.id }}</a></p>
-            </div>-->
         <div class="col-md-2 text-center mt-2">
             <p><a class="text-decoration-none text-white mt-2">{{ issue.book }}</a></p>
         </div>
@@ -48,7 +45,7 @@
         </div>
 
         <div class="col-md-2  text-center mt-2">
-            <a class="btn btn-secondary mt-2 mb-2" href="{% url 'return-book' issue.book.id %}">Return Book</a>
+            <a class="btn btn-secondary mt-2 mb-2" href="{% url 'return-book' issue.id %}">Return Book</a>
         </div>
       </div>
 </div>
