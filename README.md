@@ -35,7 +35,7 @@
 <h4>Issue Book Page</h4>
 <img src="/screenshots/Issue_Book.png">
 <h4>Return Book Page</h4>
-<img src="/screenshots/Retur_Book.png">
+<img src="/screenshots/Return_Book.png">
 <h4>Members List Page</h4>
 <img src="/screenshots/Member_list.png">
 <h4>Books List Page</h4>
